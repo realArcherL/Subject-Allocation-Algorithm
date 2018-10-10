@@ -14,4 +14,4 @@ Each subject must have a constraint on how many teachers can be allocated to a s
 The problem can be proceeded with a  linear programming approach. 
 1) starting with a flow graph with a capacity=c1 edges coming from source into each subject  (in this particular case c1=2)
 2)then capacity1 (c1) edges from each subject into the teachers willing to teach that subject 
-3)then capacity=c2 from each teacher to the sink and take linear programming for maximum flow on this graph and add it any other additional constraints.
+3)then capacity=c2 from each teacher to the sink and take linear programming for maximum flow on this graph and add it to any other additional constraints.
