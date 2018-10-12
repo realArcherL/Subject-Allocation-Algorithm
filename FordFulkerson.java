@@ -17,7 +17,7 @@ public class FordFulkerson {
     }
 
     public void runEdmundsKarp(){
-        while(hasAugmentingPath()){
+        while(!hasAugmentingPath()){
             double bottleneckCapacity = Double.POSITIVE_INFINITY;
             //finding the min capacity of Augmenting Paths
             for (Vertex v=sink; v!=source; v = lastEdgeOnShortesrResidualPath[v.getId()].getOtherVertex(v)) {
