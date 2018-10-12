@@ -8,7 +8,7 @@ there is a set of teachers with (n elements) such that m<<n(m is very much less 
 Each teacher provides with preferences of its subjects.
 The algorithm is to be devised in such a way that the maximum satisfaction or stable distribution of subjects takes place with each subject having atleast c (c <<n i.e c is very less than n) and no teacher and subject remains unallocated. 
 
-Propsed Solution: 
+Proposed Solution: 
 
 Each subject must have a constraint on how many teachers can be allocated to a subject and number of courses that can be assigned to a teacher.
 
