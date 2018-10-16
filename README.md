@@ -16,3 +16,4 @@ The problem can be proceeded with a  linear programming approach:
 1. starting with a flow graph with a capacity=c1 edges coming from source into each subject(in this particular case c1=2).
 2. Then capacity1 (c1) edges from each subject into the teachers willing to teach that subject. 
 3. Then capacity=c2 from each teacher to the sink and take linear programming for maximum flow on this graph and add it to any other additional constraints.
+(as if now all the prefernces are treated equally)
