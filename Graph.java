@@ -1,42 +1,79 @@
-import java.util.ArrayList;
+;import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
-public class Graph {
-    private int getNumberofVertices;
-    private int numberofEdges;
-    private List<List<Edge>> adjacenciesList;
+public class FordFulkerson {
 
-    public Graph(int getNumberofVertices){
-        this.getNumberofVertices=getNumberofVertices;
-        this.numberofEdges=0;
-        this.adjacenciesList = new ArrayList<>(numberofEdges);
+    private boolean[] hasPathinResidualGraph;
+    private Edge[] lastEdgeOnShortesrResidualPath;
+    private double valueOfMaxflow;
+    private Graph graph;
+    private Vertex source;
+    private Vertex sink;
+    private Vertex match;
 
-        for (int i=0;i<getNumberofVertices;i++){
-            List<Edge> edgeList = new ArrayList<>();
-            adjacenciesList.add(edgeList);
+    public FordFulkerson(Graph graph, Vertex source, Vertex sink){
+        this.graph=graph;
+        this.source=source;
+        this.sink=sink;
+    }
+
+    public void runEdmundsKarp(){
+        while(hasAugmentingPath()){
+            double bottleneckCapacity = Double.POSITIVE_INFINITY;
+            //finding the min capacity of Augmenting Paths
+            for (Vertex v=sink; v!=source; v = lastEdgeOnShortesrResidualPath[v.getId()].getOtherVertex(v)) {
+                bottleneckCapacity = Math.min(bottleneckCapacity, lastEdgeOnShortesrResidualPath[v.getId()].getResidualCapacity(v));
+            }
+
+            for(Vertex v=sink; v!=source; v = lastEdgeOnShortesrResidualPath[v.getId()].getOtherVertex(v)) {
+                lastEdgeOnShortesrResidualPath[v.getId()].addResidualFLow(v,bottleneckCapacity);
+                //if(v!=sink && v!=source) System.out.println(v);
+            }
+            valueOfMaxflow += bottleneckCapacity;
         }
     }
 
-    public int getGetNumberofVertices() {
-        return getNumberofVertices;
+    public void printMaxFlowPaths(Vertex vertex){
+
+        for (Edge v: graph.getAdjacenciesList(vertex)){
+            if (v.getFlow()==0){
+                System.out.println(v);
+            }
+        }
     }
 
-    public int getNumberofEdges() {
-        return numberofEdges;
+    public boolean getInCut(int index){
+        return hasPathinResidualGraph[index];
     }
 
-    public void addEdge(Edge edge){
-        Vertex v = edge.getFromVertex();
-        Vertex w = edge.getTargetVertex();
-
-        adjacenciesList.get(v.getId()).add(edge);
-        System.out.println("Edge inserted");
-        adjacenciesList.get(w.getId()).add(edge);
-        System.out.println("Edge inserted");
-        numberofEdges++;
+    public double getValueOfMaxflow(){
+        return valueOfMaxflow;
     }
 
-    public List<Edge> getAdjacenciesList(Vertex v) {
-        return adjacenciesList.get(v.getId());
+    private boolean hasAugmentingPath(){
+        lastEdgeOnShortesrResidualPath= new Edge[graph.getGetNumberofVertices()];
+        hasPathinResidualGraph = new boolean[graph.getGetNumberofVertices()];
+
+        Queue<Vertex> queue = new LinkedList<Vertex>();
+        queue.add(source);
+        hasPathinResidualGraph[source.getId()] = true;
+
+        while (!queue.isEmpty() && !hasPathinResidualGraph[sink.getId()]){
+            Vertex v = queue.remove();
+
+            for (Edge e: graph.getAdjacenciesList(v)){
+                Vertex w = e.getOtherVertex(v);
+
+                if(e.getResidualCapacity(w) > 0){
+                    if(!hasPathinResidualGraph[w.getId()]){
+                        lastEdgeOnShortesrResidualPath[w.getId()]=e;
+                        hasPathinResidualGraph[w.getId()] = true;
+                        queue.add(w);
+                    }
+                }
+            }
+        }
+        return hasPathinResidualGraph[sink.getId()];
     }
 }
