@@ -1,8 +1,8 @@
 public class Edge {
-    private Vertex startVertex;
-    private Vertex targetVertex;
-    private double capacity;
-    private double flow;
+    private Vertex startVertex=null;
+    private Vertex targetVertex=null;
+    private double capacity=0.0;
+    private double flow=0;
 
     public Edge(Vertex fromVertex, Vertex targetVertex, double capacity){
         this.startVertex=fromVertex;
@@ -49,6 +49,7 @@ public class Edge {
 
     @Override
     public String toString(){
-        return startVertex+"->"+targetVertex+":"+flow+"/"+ capacity;
+          return  startVertex +" gets allocated to"+targetVertex;
+        //return startVertex+" gets allocated to "+targetVertex+":"+flow+"/"+ capacity;
     }
 }
