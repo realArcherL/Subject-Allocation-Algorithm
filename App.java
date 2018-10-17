@@ -1,3 +1,4 @@
+import javax.xml.transform.Source;
 import java.util.ArrayList;
 import java.util.List;
 public class App{
@@ -69,16 +70,25 @@ public class App{
         graph.addEdge(new Edge(teacher6,vertext,1));
 
         System.out.println(graph.getNumberofEdges()+" "+ graph.getGetNumberofVertices());
-        FordFulkerson ffek = new FordFulkerson(graph, vertex0, vertext);
+        FordFulkerson ffed = new FordFulkerson(graph, vertex0, vertext);
 
-        ffek.runEdmundsKarp();
+        ffed.runEdmundsKarp();
 
-        System.out.println(ffek.getValueOfMaxflow());
 
-        System.out.println("Vertices in the min Cut are: ");
+        System.out.println(ffed.getValueOfMaxflow());
+
+        ffed.printMaxFlowPaths(teacher1);
+        ffed.printMaxFlowPaths(teacher2);
+        ffed.printMaxFlowPaths(teacher3);
+        ffed.printMaxFlowPaths(teacher4);
+        ffed.printMaxFlowPaths(teacher5);
+        ffed.printMaxFlowPaths(teacher6);
+
+        System.out.println("Incut ");
         for (int i=0; i < vertexList.size();i++) {
             System.out.println(vertexList.get(i));
         }
+        System.out.println();
 
     }
 }
