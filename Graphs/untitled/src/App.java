@@ -77,12 +77,9 @@ public class App{
 
         System.out.println(ffed.getValueOfMaxflow());
 
-        ffed.printMaxFlowPaths(teacher1);
-        ffed.printMaxFlowPaths(teacher2);
-        ffed.printMaxFlowPaths(teacher3);
-        ffed.printMaxFlowPaths(teacher4);
-        ffed.printMaxFlowPaths(teacher5);
-        ffed.printMaxFlowPaths(teacher6);
+        ffed.printMaxFlowPaths(subject1);
+        ffed.printMaxFlowPaths(subject2);
+        ffed.printMaxFlowPaths(subject3);
 
         System.out.println("Incut ");
         for (int i=0; i < vertexList.size();i++) {
