@@ -37,7 +37,7 @@ public class FordFulkerson {
     public void printMaxFlowPaths(Vertex vertex){
 
         for (Edge v: graph.getAdjacenciesList(vertex)){
-            if (v.getFlow()==0){
+            if (v.getFlow()==1){
                 System.out.println(v);
             }
         }
