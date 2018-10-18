@@ -2,6 +2,9 @@
 import java.util.List;
 import java.util.Queue;
 
+/***
+*@author ArcherL
+*/
 public class FordFulkerson {
 
     private boolean[] hasPathinResidualGraph;
