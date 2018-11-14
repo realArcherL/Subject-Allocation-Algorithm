@@ -1,3 +1,6 @@
+/**
+*Its a data structure created to store the name along with the registrtion number of the Teacher, employee.
+**/
 
 public class Vertex {
     private final int id;
