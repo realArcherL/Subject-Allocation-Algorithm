@@ -81,11 +81,11 @@ public class App{
         ffed.printMaxFlowPaths(subject2);
         ffed.printMaxFlowPaths(subject3);
 
-        System.out.println("Incut ");
+      /*  System.out.println("Incut ");
         for (int i=0; i < vertexList.size();i++) {
             System.out.println(vertexList.get(i));
         }
         System.out.println();
-
+*/
     }
 }
